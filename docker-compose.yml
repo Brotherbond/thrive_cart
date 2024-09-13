@@ -4,6 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: thrive_cart
+    environment:
+      - IS_SPECIAL_OFFER_ACTIVE=${IS_SPECIAL_OFFER_ACTIVE:-false}
     ports:
       - "${APP_PORT:-8080}:80"
     networks:
