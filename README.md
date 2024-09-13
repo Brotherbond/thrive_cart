@@ -18,19 +18,20 @@ This project is a PHP-based shopping cart system that includes product managemen
 ## Problem Overview
 You are tasked with creating a proof of concept for a sales system for Acme Widget Co. They sell three products, and you need to handle:
 
-Product codes and pricing
-Delivery cost calculations based on total order value
-A special offer: "buy one red widget, get the second half price"
+- Product codes and pricing
+- Delivery cost calculations based on total order value
+- A special offer: "buy one red widget, get the second half price"
 
 ## Assumptions
-- All products delivered is same distance
+- Basket items are delivered together.
+- Multiple rules could be applied for delivery and offers(discount)
 
 
 ## Features
 
 - **Product Management**: Easily manage products, including their code, name, and price.
 - **Basket Functionality**: Add, remove, and manage items in the basket.
-- **Delivery Charge Rules**: Define custom delivery charge rules based on the subtotal.
+- **Delivery Charge Rules**: Define custom delivery charge rules based on the subtotal - total discount applied.
 - **Offer Management**: Apply offers such as "Buy One Get One Half Off" or custom offers.
 - **Dynamic Calculation**: Calculates the subtotal, total discounts, delivery charges, and final basket total.
 
