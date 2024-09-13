@@ -8,6 +8,7 @@ This project is a PHP-based shopping cart system that includes product managemen
 - [Assumptions](#assumptions)
 - [Features](#features)
 - [Installation](#installation)
+- [Test](#test)
 - [Usage](#usage)
   - [Basic Setup](#basic-setup)
   - [Adding Products to the Basket](#adding-products-to-the-basket)
@@ -16,6 +17,7 @@ This project is a PHP-based shopping cart system that includes product managemen
   - [Getting Basket Total](#getting-basket-total)
 
 ## Problem Overview
+
 You are tasked with creating a proof of concept for a sales system for Acme Widget Co. They sell three products, and you need to handle:
 
 - Product codes and pricing
@@ -23,9 +25,9 @@ You are tasked with creating a proof of concept for a sales system for Acme Widg
 - A special offer: "buy one red widget, get the second half price"
 
 ## Assumptions
+
 - Basket items are delivered together.
 - Multiple rules could be applied for delivery and offers(discount)
-
 
 ## Features
 
@@ -52,6 +54,15 @@ You are tasked with creating a proof of concept for a sales system for Acme Widg
    cd thrive_cart
    docker-compose up -d #`docker compose up -d` can be used if docker-compose is not set
    ```
+
+## Test
+
+Run the following composer script
+
+```bash
+composer phpstan # static analysis
+composer test # to run the tests
+```
 
 ## Usage
 
@@ -109,11 +120,13 @@ $basket->add('G01');  // Adds one Green Widget to the basket
 #### Calculating Delivery Charges
 
 Delivery charges are calculated based on predefined rules:
+
 ```php
 $deliveryCost = $basket->getDeliveryCost();  // Returns the delivery charge based on the subtotal
 ```
 
 You can also define custom delivery charge rules:
+
 ```php
 DeliveryCharge::addRule(120, 0.00);  // Free delivery for orders above $120
 ```
@@ -125,9 +138,11 @@ Offers like "Buy One Get One Half Off" can be applied dynamically:
 ```php
 $totalDiscount = $basket->getOffers();  // Returns total discount applied from all offers
 ```
+
 #### Getting Basket Total
 
 To get the final total, including products, delivery, and offers:
+
 ```php
 $total = $basket->getTotal();  // Returns the total cost including delivery and discounts
 ```
