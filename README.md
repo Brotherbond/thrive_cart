@@ -70,6 +70,8 @@ composer test # to run the tests
 
 To get started with Thrive Cart, you need to set up products, create a product catalog, configure delivery charge rules, and define offers. Below is a step-by-step guide:
 
+***NB: Subtotal is the total cost of items in the basket before applying the delivery and offer rules; it might be greater than the actual total paid.***
+
 ```php
 <?php
 use App\Product;
