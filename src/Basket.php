@@ -45,6 +45,14 @@ class Basket
         return $charge;
     }
 
+    /**
+     * @return array<string, int>
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
     public function getOffers(): float
     {
         $totalDiscount = 0.00;
@@ -67,5 +75,21 @@ class Basket
     public function getTotal(): float
     {
         return round($this->getSubTotal() + $this->getDeliveryCost() - $this->getOffers(), 2);
+    }
+
+    public function remove(string $productCode, bool $removeAll = false): void
+    {
+        if (!isset($this->items[$productCode])) {
+            throw new \InvalidArgumentException("Product not in basket: $productCode");
+        }
+
+        if ($removeAll) {
+            unset($this->items[$productCode]);
+        } else {
+            $this->items[$productCode]--;
+            if ($this->items[$productCode] <= 0) {
+                unset($this->items[$productCode]);
+            }
+        }
     }
 }

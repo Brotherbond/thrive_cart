@@ -19,4 +19,17 @@ class DeliveryCharge extends Delivery
         }
         return end(self::$chargeRules)['charge'] ?? 0.00;
     }
+
+    public static function addRule(float $minTotal, float $charge): void
+    {
+        self::$chargeRules[] = ['minTotal' => $minTotal, 'charge' => $charge];
+        self::sortRules();
+    }
+
+    private static function sortRules(): void
+    {
+        usort(self::$chargeRules, function ($a, $b) {
+            return $b['minTotal'] <=> $a['minTotal'];
+        });
+    }
 }
